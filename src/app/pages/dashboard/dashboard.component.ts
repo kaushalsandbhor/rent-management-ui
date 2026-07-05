@@ -8,6 +8,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { MatOptionModule } from '@angular/material/core';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { CollectPaymentDialogComponent } from '../../payment/collect-payment-dialog/collect-payment-dialog.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,7 +21,7 @@ import { MatOptionModule } from '@angular/material/core';
   MatFormFieldModule,
   MatSelectModule,
   MatOptionModule,
-  MatCardModule
+  MatCardModule,MatDialogModule
 ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
@@ -27,6 +29,8 @@ import { MatOptionModule } from '@angular/material/core';
 export class DashboardComponent implements OnInit {
 
   private dashboardService = inject(DashboardService);
+
+  private dialog = inject(MatDialog);
 
   dashboard: Dashboard[] = [];
 
@@ -143,6 +147,30 @@ loadDashboard(): void {
         }
 
       });
+
+}
+
+openCollectPayment(row: Dashboard): void {
+
+  if (!row.tenantId) {
+    return;
+  }
+
+  const dialogRef = this.dialog.open(
+    CollectPaymentDialogComponent,
+    {
+      width: '500px',
+      data: row
+    }
+  );
+
+  dialogRef.afterClosed().subscribe(result => {
+
+    if (result) {
+      this.loadDashboard();
+    }
+
+  });
 
 }
 

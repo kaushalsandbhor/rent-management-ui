@@ -129,14 +129,15 @@
 
     <td mat-cell *matCellDef="let row">
 
-      <button
-        mat-raised-button
-        color="primary"
-        [disabled]="!row.tenantId">
+     <button
+    mat-raised-button
+    color="primary"
+    [disabled]="!row.tenantId"
+    (click)="openCollectPayment(row)">
 
-        Collect
+    Collect
 
-      </button>
+</button>
 
     </td>
 

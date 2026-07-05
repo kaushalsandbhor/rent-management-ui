@@ -14,4 +14,8 @@ export interface Dashboard {
 
   balance: number | null;
 
+  billingMonth: number;
+
+  billingYear: number;
+
 }
