@@ -10,17 +10,93 @@
 
     <p><strong>Tenant :</strong> {{data.tenantName}}</p>
 
-    <p><strong>Rent :</strong> ₹ {{data.rent}}</p>
+    <p><strong>Monthly Rent :</strong> ₹ {{data.rent}}</p>
 
-    <p><strong>Billing :</strong> {{data.billingMonth}} / {{data.billingYear}}</p>
+    <p>
+        <strong>Billing :</strong>
+
+        {{data.billingMonth}} / {{data.billingYear}}
+
+    </p>
+
+    <mat-form-field appearance="outline">
+
+        <mat-label>Paid Amount</mat-label>
+
+        <input
+            matInput
+            type="number"
+            [(ngModel)]="paidAmount">
+
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+
+        <mat-label>Payment Date</mat-label>
+
+        <input
+            matInput
+            [matDatepicker]="picker"
+            [(ngModel)]="paymentDate">
+
+        <mat-datepicker-toggle
+            matSuffix
+            [for]="picker">
+        </mat-datepicker-toggle>
+
+        <mat-datepicker #picker></mat-datepicker>
+
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+
+        <mat-label>Payment Mode</mat-label>
+
+        <mat-select
+            [(ngModel)]="paymentMode">
+
+            <mat-option
+                *ngFor="let mode of paymentModes"
+                [value]="mode">
+
+                {{mode}}
+
+            </mat-option>
+
+        </mat-select>
+
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+
+        <mat-label>Remarks</mat-label>
+
+        <textarea
+            matInput
+            rows="3"
+            [(ngModel)]="remarks">
+        </textarea>
+
+    </mat-form-field>
 
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
 
-    <button mat-button mat-dialog-close>
+    <button
+        mat-button
+        (click)="dialogRef.close()">
 
-        Close
+        Cancel
+
+    </button>
+
+    <button
+        mat-raised-button
+        color="primary"
+        (click)="save()">
+
+        Save
 
     </button>
 
