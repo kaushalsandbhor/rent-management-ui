@@ -1,0 +1,99 @@
+<h2 mat-dialog-title>
+
+    Add Tenant
+
+</h2>
+
+<mat-dialog-content>
+
+    <mat-form-field appearance="outline">
+
+        <mat-label>Name</mat-label>
+
+        <input
+            matInput
+            [(ngModel)]="name">
+
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+
+        <mat-label>Phone</mat-label>
+
+        <input
+            matInput
+            [(ngModel)]="phone">
+
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+
+        <mat-label>Deposit</mat-label>
+
+        <input
+            matInput
+            type="number"
+            [(ngModel)]="deposit">
+
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+
+        <mat-label>Joining Date</mat-label>
+
+        <input
+            matInput
+            [matDatepicker]="picker"
+            [(ngModel)]="joiningDate"
+            (dateChange)="loadVacantFlats()">
+
+        <mat-datepicker-toggle
+            matSuffix
+            [for]="picker">
+        </mat-datepicker-toggle>
+
+        <mat-datepicker #picker></mat-datepicker>
+
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+
+        <mat-label>Flat</mat-label>
+
+        <mat-select
+            [(ngModel)]="flatId">
+
+            <mat-option
+                *ngFor="let flat of flats"
+                [value]="flat.id">
+
+                {{flat.flatNumber}}
+
+            </mat-option>
+
+        </mat-select>
+
+    </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+
+    <button
+        mat-button
+        (click)="dialogRef.close()">
+
+        Cancel
+
+    </button>
+
+    <button
+    mat-raised-button
+    color="primary"
+    (click)="save()">
+
+    Save
+
+</button>
+
+</mat-dialog-actions>

@@ -47,3 +47,13 @@ mat-card h2{
     font-size:30px;
 
 }
+
+.top-bar{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    margin-bottom:20px;
+
+}

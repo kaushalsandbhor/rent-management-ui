@@ -10,7 +10,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatOptionModule } from '@angular/material/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { CollectPaymentDialogComponent } from '../../payment/collect-payment-dialog/collect-payment-dialog.component';
-
+import { MatButtonModule } from '@angular/material/button';
+import { AddTenantDialogComponent } from '../../tenant/add-tenant-dialog/add-tenant-dialog.component';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
@@ -21,7 +22,7 @@ import { CollectPaymentDialogComponent } from '../../payment/collect-payment-dia
   MatFormFieldModule,
   MatSelectModule,
   MatOptionModule,
-  MatCardModule,MatDialogModule
+  MatCardModule,MatDialogModule,MatButtonModule
 ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
@@ -29,6 +30,7 @@ import { CollectPaymentDialogComponent } from '../../payment/collect-payment-dia
 export class DashboardComponent implements OnInit {
 
   private dashboardService = inject(DashboardService);
+  
 
   private dialog = inject(MatDialog);
 
@@ -168,6 +170,27 @@ openCollectPayment(row: Dashboard): void {
 
     if (result) {
       this.loadDashboard();
+    }
+
+  });
+
+}
+
+openAddTenant(): void {
+
+  const dialogRef = this.dialog.open(
+    AddTenantDialogComponent,
+    {
+      width: '550px'
+    }
+  );
+
+  dialogRef.afterClosed().subscribe(result => {
+
+    if (result) {
+
+      this.loadDashboard();
+
     }
 
   });

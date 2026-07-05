@@ -51,7 +51,7 @@ export class CollectPaymentDialogComponent {
   { value: 'CHEQUE', label: 'Cheque' }
 ];
 
-paymentMode = 'UPI';;
+paymentMode = '';
 
   constructor(
     @Inject(MAT_DIALOG_DATA)
