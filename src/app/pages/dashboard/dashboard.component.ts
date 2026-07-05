@@ -12,6 +12,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { CollectPaymentDialogComponent } from '../../payment/collect-payment-dialog/collect-payment-dialog.component';
 import { MatButtonModule } from '@angular/material/button';
 import { AddTenantDialogComponent } from '../../tenant/add-tenant-dialog/add-tenant-dialog.component';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
@@ -31,6 +32,7 @@ export class DashboardComponent implements OnInit {
 
   private dashboardService = inject(DashboardService);
   
+  private router = inject(Router);
 
   private dialog = inject(MatDialog);
 
@@ -194,6 +196,14 @@ openAddTenant(): void {
     }
 
   });
+
+}
+
+openTenantManagement(): void {
+
+   console.log("Button Clicked");
+
+  this.router.navigate(['/tenants']);
 
 }
 

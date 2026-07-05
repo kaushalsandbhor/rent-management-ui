@@ -1,5 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Tenant } from '../models/tenant';
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +20,11 @@ export class TenantService {
     );
 
   }
+
+  getAllTenants() {
+
+  return this.http.get<Tenant[]>(this.api);
+
+}
 
 }
