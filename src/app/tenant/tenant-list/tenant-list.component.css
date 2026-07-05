@@ -28,4 +28,19 @@
 
 .mat-body-1 {
     margin-left: 15px;
+    color: #616161;
+}
+
+.mat-mdc-header-cell{
+
+    font-weight:600;
+    color:#424242;
+    border-bottom:1px solid #e0e0e0;
+
+}
+.mat-mdc-cell,
+.mat-mdc-header-cell{
+
+    padding:16px;
+
 }

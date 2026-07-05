@@ -14,3 +14,69 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* ---------- Table ---------- */
+
+.table-container {
+    margin: 15px;
+}
+
+.table-container table,
+.imtable {
+    width: 100%;
+}
+
+.mat-mdc-table {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.mat-mdc-header-row {
+    background: #fafafa;
+}
+
+.mat-mdc-header-cell {
+    font-weight: 600;
+    color: #424242;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 16px;
+}
+
+.mat-mdc-cell {
+    padding: 16px;
+}
+
+.mat-mdc-row {
+    transition: background-color .18s ease;
+}
+
+.mat-mdc-row:hover {
+    background: #f7f7f7;
+}
+
+.mat-mdc-row button {
+    transition: transform .15s ease;
+}
+
+.mat-mdc-row button:hover:not(:disabled) {
+    transform: scale(1.03);
+}
+
+.mat-body-1 {
+    margin-left: 15px;
+}
+
+.mat-mdc-header-cell {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0;
+}
+
+.mat-mdc-cell {
+    font-size: 14px;
+}
+
+.mat-mdc-header-cell,
+.mat-mdc-cell {
+    padding: 16px;
+}
