@@ -1,0 +1,31 @@
+.table-container {
+    margin: 15px;
+}
+
+.table-container table {
+    width: 100%;
+}
+
+.imtable {
+    width: 100%;
+}
+
+.page-header{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin:20px 15px;
+}
+
+.page-header .active-page{
+    transform:scale(1.08);
+    font-weight:600;
+}
+
+.page-header button{
+    transition:all .2s ease;
+}
+
+.mat-body-1 {
+    margin-left: 15px;
+}

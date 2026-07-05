@@ -4,7 +4,20 @@
 
 </h2>
 
-<table mat-table [dataSource]="tenants">
+<p class="mat-body-1">Total Rows : {{ tenants.length }}</p>
+
+<div *ngIf="loading">
+  Loading Tenants ...
+</div>
+
+<div
+    class="table-container"
+    *ngIf="!loading">
+
+    <table
+        mat-table
+        [dataSource]="tenants"
+        class="mat-elevation-z2 imtable">
 
     <ng-container matColumnDef="name">
 

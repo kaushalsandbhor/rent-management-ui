@@ -7,6 +7,7 @@ import { TenantService } from '../../services/tenant.service';
 import { Tenant } from '../../models/tenant';
 import { VacateTenantDialogComponent } from '../vacate-tenant-dialog/vacate-tenant-dialog.component';
 import { MatButtonModule } from '@angular/material/button';
+import { Dashboard } from '../../models/dashboard';
 
 @Component({
   selector: 'app-tenant-list',
@@ -23,6 +24,10 @@ import { MatButtonModule } from '@angular/material/button';
 export class TenantListComponent implements OnInit {
 
   private dialog = inject(MatDialog);
+
+  dashboard: Dashboard[] = [];
+  
+    loading = true;
 
   private tenantService = inject(TenantService);
 
@@ -47,15 +52,29 @@ export class TenantListComponent implements OnInit {
 
   loadTenants() {
 
-    this.tenantService
-      .getAllTenants()
-      .subscribe(data => {
+  this.loading = true;
+
+  this.tenantService
+    .getAllTenants()
+    .subscribe({
+
+      next: data => {
 
         this.tenants = data;
+        this.loading = false;
 
-      });
+      },
 
-  }
+      error: err => {
+
+        console.error(err);
+        this.loading = false;
+
+      }
+
+    });
+
+}
 
   editTenant(row: Tenant): void {
 
