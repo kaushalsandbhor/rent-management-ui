@@ -1,0 +1,49 @@
+.filters{
+
+    display:flex;
+
+    gap:20px;
+
+    margin-bottom:20px;
+
+}
+
+mat-form-field{
+
+    width:200px;
+
+}
+
+table{
+
+    width:100%;
+
+}
+
+.summary{
+
+    display:grid;
+
+    grid-template-columns:repeat(5,1fr);
+
+    gap:20px;
+
+    margin-bottom:20px;
+
+}
+
+mat-card{
+
+    padding:20px;
+
+    text-align:center;
+
+}
+
+mat-card h2{
+
+    margin-top:10px;
+
+    font-size:30px;
+
+}
