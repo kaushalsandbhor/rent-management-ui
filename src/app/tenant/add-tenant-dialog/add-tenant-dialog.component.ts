@@ -13,9 +13,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-
+import { OnInit } from '@angular/core';
 import { FlatService } from '../../services/flat.service';
 import { FlatDropdown } from '../../models/flat-dropdown';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Inject } from '@angular/core';
 
 @Component({
   selector: 'app-add-tenant-dialog',
@@ -34,13 +36,17 @@ import { FlatDropdown } from '../../models/flat-dropdown';
   templateUrl: './add-tenant-dialog.component.html',
   styleUrl: './add-tenant-dialog.component.css'
 })
-export class AddTenantDialogComponent {
+export class AddTenantDialogComponent implements OnInit {
 
   private tenantService = inject(TenantService);
 
   private flatService = inject(FlatService);
 
-  dialogRef = inject(MatDialogRef<AddTenantDialogComponent>);
+  constructor(
+    @Inject(MAT_DIALOG_DATA)
+    public data: any,
+    public dialogRef: MatDialogRef<AddTenantDialogComponent>
+) {}
 
   name = '';
 
@@ -53,6 +59,24 @@ export class AddTenantDialogComponent {
   flatId!: number;
 
   flats: FlatDropdown[] = [];
+
+  ngOnInit(): void {
+
+  if (this.data?.mode === 'EDIT') {
+
+    const tenant = this.data.tenant;
+
+    this.name = tenant.name;
+    this.phone = tenant.phone;
+    this.deposit = tenant.deposit;
+    this.flatId = tenant.flatId;
+    this.joiningDate = new Date(tenant.joiningDate);
+
+    this.loadVacantFlats();
+
+  }
+
+}
 
   loadVacantFlats() {
 
@@ -88,25 +112,35 @@ export class AddTenantDialogComponent {
 
   };
 
-  this.tenantService
-      .createTenant(request)
-      .subscribe({
+  if (this.data?.mode === 'EDIT') {
 
-        next: () => {
+    this.tenantService
+        .updateTenant(this.data.tenant.id, request)
+        .subscribe({
 
-          this.dialogRef.close(true);
+            next: () => {
 
-        },
+                this.dialogRef.close(true);
 
-        error: err => {
+            }
 
-          console.error(err);
+        });
 
-          alert("Unable to create tenant.");
+} else {
 
-        }
+    this.tenantService
+        .createTenant(request)
+        .subscribe({
 
-      });
+            next: () => {
+
+                this.dialogRef.close(true);
+
+            }
+
+        });
+
+}
 
 }
 

@@ -12,6 +12,8 @@ export interface Tenant {
 
   leavingDate: string | null;
 
+  flatId: number;
+
   flatNumber: string;
 
 }

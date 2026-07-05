@@ -27,4 +27,16 @@ export class TenantService {
 
 }
 
+updateTenant(id: number, request: any) {
+
+  return this.http.put(
+
+    `${this.api}/${id}`,
+
+    request
+
+  );
+
+}
+
 }
