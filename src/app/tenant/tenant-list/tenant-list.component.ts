@@ -6,15 +6,17 @@ import { AddTenantDialogComponent } from '../add-tenant-dialog/add-tenant-dialog
 import { TenantService } from '../../services/tenant.service';
 import { Tenant } from '../../models/tenant';
 import { VacateTenantDialogComponent } from '../vacate-tenant-dialog/vacate-tenant-dialog.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-tenant-list',
   standalone: true,
   imports: [
-    CommonModule,
-    MatTableModule,
-    MatDialogModule
-  ],
+  CommonModule,
+  MatTableModule,
+  MatDialogModule,
+  MatButtonModule
+],
   templateUrl: './tenant-list.component.html',
   styleUrl: './tenant-list.component.css'
 })
@@ -27,13 +29,15 @@ export class TenantListComponent implements OnInit {
   tenants: Tenant[] = [];
 
   displayedColumns = [
-    'name',
-    'phone',
-    'flat',
-    'joining',
-    'deposit',
-    'action'
-  ];
+  'name',
+  'phone',
+  'flat',
+  'joining',
+  'leaving',
+  'deposit',
+  'status',
+  'action'
+];
 
   ngOnInit(): void {
 

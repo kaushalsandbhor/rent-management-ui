@@ -4,7 +4,7 @@
 
 </h2>
 
-<mat-dialog-content>
+<mat-dialog-content >
 
     <mat-form-field appearance="outline">
 
@@ -43,6 +43,7 @@
 
         <input
             matInput
+            [disabled]="data?.mode === 'EDIT'"
             [matDatepicker]="picker"
             [(ngModel)]="joiningDate"
             (dateChange)="loadVacantFlats()">
@@ -61,19 +62,44 @@
         <mat-label>Flat</mat-label>
 
         <mat-select
-            [(ngModel)]="flatId">
+            [(ngModel)]="flatId"
+            [disabled]="data?.mode === 'EDIT'">
 
             <mat-option
                 *ngFor="let flat of flats"
                 [value]="flat.id">
 
-                {{flat.flatNumber}}
+                {{ flat.flatNumber }}
 
             </mat-option>
 
         </mat-select>
 
     </mat-form-field>
+
+    <!-- Leaving Date (Edit Mode Only) -->
+   <mat-form-field
+    appearance="outline"
+    *ngIf="data?.mode === 'EDIT'">
+
+    <mat-label>Leaving Date</mat-label>
+
+    <input
+        matInput
+        [matDatepicker]="leavingPicker"
+        [value]="data.tenant.leavingDate"
+        placeholder="Not Vacated"
+        disabled>
+
+    <mat-datepicker-toggle
+        matSuffix
+        [for]="leavingPicker"
+        disabled>
+    </mat-datepicker-toggle>
+
+    <mat-datepicker #leavingPicker disabled></mat-datepicker>
+
+</mat-form-field>
 
 </mat-dialog-content>
 
@@ -88,12 +114,12 @@
     </button>
 
     <button
-    mat-raised-button
-    color="primary"
-    (click)="save()">
+        mat-raised-button
+        color="primary"
+        (click)="save()">
 
-    Save
+        Save
 
-</button>
+    </button>
 
 </mat-dialog-actions>
