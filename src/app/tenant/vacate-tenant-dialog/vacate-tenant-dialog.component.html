@@ -1,0 +1,64 @@
+<h2 mat-dialog-title>
+
+    Vacate Tenant
+
+</h2>
+
+<mat-dialog-content>
+
+    <p>
+
+        <strong>Tenant</strong>
+
+        {{tenant.name}}
+
+    </p>
+
+    <p>
+
+        <strong>Flat</strong>
+
+        {{tenant.flatNumber}}
+
+    </p>
+
+    <mat-form-field appearance="outline">
+
+        <mat-label>Leaving Date</mat-label>
+
+        <input
+            matInput
+            [matDatepicker]="picker"
+            [(ngModel)]="leavingDate">
+
+        <mat-datepicker-toggle
+            matSuffix
+            [for]="picker">
+        </mat-datepicker-toggle>
+
+        <mat-datepicker #picker></mat-datepicker>
+
+    </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+
+    <button
+        mat-button
+        (click)="dialogRef.close()">
+
+        Cancel
+
+    </button>
+
+    <button
+        mat-raised-button
+        color="warn"
+        (click)="vacate()">
+
+        Vacate
+
+    </button>
+
+</mat-dialog-actions>

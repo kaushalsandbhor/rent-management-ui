@@ -5,6 +5,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { AddTenantDialogComponent } from '../add-tenant-dialog/add-tenant-dialog.component';
 import { TenantService } from '../../services/tenant.service';
 import { Tenant } from '../../models/tenant';
+import { VacateTenantDialogComponent } from '../vacate-tenant-dialog/vacate-tenant-dialog.component';
 
 @Component({
   selector: 'app-tenant-list',
@@ -62,6 +63,28 @@ export class TenantListComponent implements OnInit {
         mode: 'EDIT',
         tenant: row
       }
+    }
+  );
+
+  dialogRef.afterClosed().subscribe(result => {
+
+    if(result){
+
+      this.loadTenants();
+
+    }
+
+  });
+
+}
+
+vacateTenant(row: Tenant): void {
+
+  const dialogRef = this.dialog.open(
+    VacateTenantDialogComponent,
+    {
+      width: '450px',
+      data: row
     }
   );
 

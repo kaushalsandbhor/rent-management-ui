@@ -86,25 +86,40 @@
 
     </ng-container>
 
-    <ng-container matColumnDef="action">
-    
-        <th mat-header-cell *matHeaderCellDef>
-    
-            Action
-    
-        </th>
-    
-        <td mat-cell *matCellDef="let row">
-    
-            <button mat-raised-button color="primary" (click)="editTenant(row)">
-    
-                Edit
-    
-            </button>
-    
-        </td>
-    
-    </ng-container>
+   <ng-container matColumnDef="action">
+
+    <th mat-header-cell *matHeaderCellDef>
+
+        Action
+
+    </th>
+
+    <td mat-cell *matCellDef="let row">
+
+        <button
+            mat-raised-button
+            color="primary"
+            (click)="editTenant(row)">
+
+            Edit
+
+        </button>
+
+        &nbsp;
+
+        <button
+            mat-raised-button
+            color="warn"
+            (click)="vacateTenant(row)"
+            [disabled]="row.leavingDate">
+
+            Vacate
+
+        </button>
+
+    </td>
+
+</ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
 

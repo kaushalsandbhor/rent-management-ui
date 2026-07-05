@@ -39,4 +39,16 @@ updateTenant(id: number, request: any) {
 
 }
 
+vacateTenant(id: number, request: any) {
+
+  return this.http.put(
+
+    `${this.api}/${id}/vacate`,
+
+    request
+
+  );
+
+}
+
 }
