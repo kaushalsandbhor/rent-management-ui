@@ -58,6 +58,8 @@ export class AddTenantDialogComponent implements OnInit {
 
   flatId!: number;
 
+  leavingDate: Date | null = null;
+
   flats: FlatDropdown[] = [];
 
   ngOnInit(): void {
@@ -71,6 +73,9 @@ export class AddTenantDialogComponent implements OnInit {
     this.deposit = tenant.deposit;
     this.flatId = tenant.flatId;
     this.joiningDate = new Date(tenant.joiningDate);
+    if (tenant.leavingDate) {
+    this.leavingDate = new Date(tenant.leavingDate);
+}
 
     this.loadVacantFlats();
 

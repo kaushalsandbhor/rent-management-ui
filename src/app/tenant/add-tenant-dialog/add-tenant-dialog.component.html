@@ -57,25 +57,42 @@
 
     </mat-form-field>
 
-    <mat-form-field appearance="outline">
+    <!-- ADD MODE -->
 
-        <mat-label>Flat</mat-label>
+<mat-form-field
+    appearance="outline"
+    *ngIf="data?.mode !== 'EDIT'">
 
-        <mat-select
-            [(ngModel)]="flatId"
-            [disabled]="data?.mode === 'EDIT'">
+    <mat-label>Flat</mat-label>
 
-            <mat-option
-                *ngFor="let flat of flats"
-                [value]="flat.id">
+    <mat-select [(ngModel)]="flatId">
 
-                {{ flat.flatNumber }}
+        <mat-option
+            *ngFor="let flat of flats"
+            [value]="flat.id">
 
-            </mat-option>
+            {{ flat.flatNumber }}
 
-        </mat-select>
+        </mat-option>
 
-    </mat-form-field>
+    </mat-select>
+
+</mat-form-field>
+
+<!-- EDIT MODE -->
+
+<mat-form-field
+    appearance="outline"
+    *ngIf="data?.mode === 'EDIT'">
+
+    <mat-label>Flat</mat-label>
+
+    <input
+        matInput
+        [value]="data.tenant.flatNumber"
+        disabled>
+
+</mat-form-field>
 
     <!-- Leaving Date (Edit Mode Only) -->
    <mat-form-field
@@ -85,19 +102,17 @@
     <mat-label>Leaving Date</mat-label>
 
     <input
-        matInput
-        [matDatepicker]="leavingPicker"
-        [value]="data.tenant.leavingDate"
-        placeholder="Not Vacated"
-        disabled>
+    matInput
+    [matDatepicker]="leavingPicker"
+    [(ngModel)]="leavingDate"
+    disabled>
 
-    <mat-datepicker-toggle
-        matSuffix
-        [for]="leavingPicker"
-        disabled>
-    </mat-datepicker-toggle>
+<mat-datepicker-toggle
+    matSuffix
+    [for]="leavingPicker">
+</mat-datepicker-toggle>
 
-    <mat-datepicker #leavingPicker disabled></mat-datepicker>
+<mat-datepicker #leavingPicker></mat-datepicker>
 
 </mat-form-field>
 
