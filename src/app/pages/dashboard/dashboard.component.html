@@ -98,8 +98,12 @@
 
 <p class="mat-body-1">Total Rows : {{ dashboard.length }}</p>
 
-<div *ngIf="loading">
-  Loading Dashboard...
+<div
+    *ngIf="loading"
+    class="loading">
+
+    Loading Dashboard...
+
 </div>
 
 <div class="table-container">
