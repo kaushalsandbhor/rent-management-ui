@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import {
   MAT_DIALOG_DATA,
   MatDialogModule,
-  MatDialogRef
+  MatDialogRef,
 } from '@angular/material/dialog';
 
 import { FormsModule } from '@angular/forms';
@@ -16,6 +16,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 
 import { Dashboard } from '../../models/dashboard';
+import { inject } from '@angular/core';
+import { PaymentService } from '../../services/payment.service';
 
 @Component({
   selector: 'app-collect-payment-dialog',
@@ -29,47 +31,63 @@ import { Dashboard } from '../../models/dashboard';
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatButtonModule
+    MatButtonModule,
   ],
   templateUrl: './collect-payment-dialog.component.html',
-  styleUrl: './collect-payment-dialog.component.css'
+  styleUrl: './collect-payment-dialog.component.css',
 })
 export class CollectPaymentDialogComponent {
+  private paymentService = inject(PaymentService);
 
   paidAmount!: number;
 
   paymentDate = new Date();
 
-  paymentMode = 'UPI';
-
   remarks = '';
 
   paymentModes = [
-    'UPI',
-    'Cash',
-    'Cheque'
-  ];
+  { value: 'UPI', label: 'UPI' },
+  { value: 'CASH', label: 'Cash' },
+  { value: 'CHEQUE', label: 'Cheque' }
+];
+
+paymentMode = 'UPI';;
 
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: Dashboard,
-    public dialogRef: MatDialogRef<CollectPaymentDialogComponent>
+    public dialogRef: MatDialogRef<CollectPaymentDialogComponent>,
   ) {}
 
-  save() {
+  save(): void {
+    const formattedDate = this.paymentDate.toISOString().split('T')[0];
 
-    console.log({
+    const request = {
       tenantId: this.data.tenantId,
+
       billingMonth: this.data.billingMonth,
+
       billingYear: this.data.billingYear,
+
       paidAmount: this.paidAmount,
-      paymentDate: this.paymentDate,
+
+      paymentDate: formattedDate,
+
       paymentMode: this.paymentMode,
-      remarks: this.remarks
+
+      remarks: this.remarks,
+    };
+
+    this.paymentService.collectPayment(request).subscribe({
+      next: () => {
+        this.dialogRef.close(true);
+      },
+
+      error: (err) => {
+        console.error(err);
+
+        alert('Unable to save payment.');
+      },
     });
-
-    this.dialogRef.close(true);
-
   }
-
 }

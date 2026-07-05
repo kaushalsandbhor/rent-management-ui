@@ -52,19 +52,16 @@
 
         <mat-label>Payment Mode</mat-label>
 
-        <mat-select
-            [(ngModel)]="paymentMode">
-
-            <mat-option
-                *ngFor="let mode of paymentModes"
-                [value]="mode">
-
-                {{mode}}
-
-            </mat-option>
-
-        </mat-select>
-
+    <mat-select [(ngModel)]="paymentMode">
+    
+        <mat-option *ngFor="let mode of paymentModes" [value]="mode.value">
+    
+            {{ mode.label }}
+    
+        </mat-option>
+    
+    </mat-select>
+    
     </mat-form-field>
 
     <mat-form-field appearance="outline">
