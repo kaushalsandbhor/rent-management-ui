@@ -11,7 +11,7 @@ export class TenantService {
   private http = inject(HttpClient);
 
   private api =
-    `${environment.apiUrl}/tenants;
+    `${environment.apiUrl}/tenants`;
 
   createTenant(request: any) {
 
@@ -32,7 +32,7 @@ updateTenant(id: number, request: any) {
 
   return this.http.put(
 
-    `${this.api}/${id}`,
+    `${environment.apiUrl}/${id}`,
 
     request
 
@@ -44,7 +44,7 @@ vacateTenant(id: number, request: any) {
 
   return this.http.put(
 
-    `${this.api}/${id}/vacate`,
+    `${environment.apiUrl}/${id}/vacate`,
 
     request
 
