@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Tenant } from '../models/tenant';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class TenantService {
   private http = inject(HttpClient);
 
   private api =
-    'https://rent-management-api-production.up.railway.app/api/tenants';
+    `${environment.apiUrl}/tenants;
 
   createTenant(request: any) {
 
