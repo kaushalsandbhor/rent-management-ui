@@ -22,7 +22,7 @@ mat-card{
 
     padding:20px;
     border-radius:10px;
-    transition:all .18s ease;
+    transition:all .40s ease;
     cursor:default;
 
 }
@@ -76,7 +76,7 @@ mat-form-field{
 
 .top-bar button{
 
-    transition:.18s ease;
+    transition:.50s ease;
 
 }
 
