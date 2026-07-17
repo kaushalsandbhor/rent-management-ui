@@ -153,13 +153,13 @@ mat-form-field{
 /* ---------- Table Buttons ---------- */
 
 .mat-mdc-row button{
-
+    
     transition:.15s ease;
 
 }
 
 .mat-mdc-row button:hover:not(:disabled){
-
+    min-width: 100px;
     transform:scale(1.03);
 
 }
