@@ -1,8 +1,30 @@
-<h2>
+<div class="page-tabs">
+
+  <div
+    class="page-tab active"
+    routerLink="/dashboard">
 
     Dashboard
 
-</h2>
+  </div>
+
+  <div
+    class="page-tab"
+    (click)="openTenantManagement()">
+
+    Tenant Management
+
+  </div>
+
+  <div
+    class="page-tab"
+    routerLink="/rent-settings">
+
+    Rent Settings
+
+  </div>
+
+</div>
 
 <div class="summary">
 
@@ -84,14 +106,6 @@
 
   </button>
 
-</div>
-
-<div class="top-bar">
-  <button mat-raised-button color="accent" (click)="openTenantManagement()">
-
-    Tenant Management
-
-  </button>
 </div>
 
 </div>

@@ -13,6 +13,8 @@ import { CollectPaymentDialogComponent } from '../../payment/collect-payment-dia
 import { MatButtonModule } from '@angular/material/button';
 import { AddTenantDialogComponent } from '../../tenant/add-tenant-dialog/add-tenant-dialog.component';
 import { Router } from '@angular/router';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
@@ -23,7 +25,7 @@ import { Router } from '@angular/router';
   MatFormFieldModule,
   MatSelectModule,
   MatOptionModule,
-  MatCardModule,MatDialogModule,MatButtonModule
+  MatCardModule,MatDialogModule,MatButtonModule,MatListModule,MatIconModule
 ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
