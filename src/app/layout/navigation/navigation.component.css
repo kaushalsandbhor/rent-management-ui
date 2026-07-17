@@ -1,0 +1,33 @@
+.page-tabs{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin:20px 15px;
+    border-bottom:1px solid #e0e0e0;
+    padding-bottom:12px;
+}
+
+.page-tab{
+    padding:12px 22px;
+    border:1px solid #dcdcdc;
+    border-radius:10px 10px 0 0;
+    background:#fafafa;
+    color:#424242;
+    font-size:18px;
+    font-weight:500;
+    cursor:pointer;
+    transition:.3s ease;
+    user-select:none;
+}
+
+.page-tab:hover{
+    background:#1976d2;
+    color:#fff;
+    border-color:#1976d2;
+}
+
+.page-tab.active{
+    background:#1976d2;
+    color:#fff;
+    border-color:#1976d2;
+}
