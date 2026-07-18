@@ -83,7 +83,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
 .mat-mdc-row .mat-mdc-raised-button {
-    min-width: 100px;
+    min-width: 90px;
 }
 
-
+.Rent-sett-filter{
+    gap: 18px ;
+}
