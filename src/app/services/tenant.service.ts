@@ -44,7 +44,7 @@ vacateTenant(id: number, request: any) {
 
   return this.http.put(
 
-    `${environment.apiUrl}/${id}/vacate`,
+    `${environment.apiUrl}/tenants/${id}/vacate`,
 
     request
 

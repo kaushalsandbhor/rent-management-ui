@@ -42,7 +42,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     padding: 16px;
 }
 
-.mat-mdc-cell {
+.mdc-data-table__header-cell {
     padding: 16px;
 }
 
@@ -54,6 +54,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     background: #f7f7f7;
 }
 
+.mat-mdc-table .mat-mdc-header-row .mat-mdc-header-cell {
+    /*background-color: #e0e0e0 ;*/
+    background-color: rgb(255 216 223)
+}
 .mat-mdc-row button {
     transition: transform .15s ease;
 }

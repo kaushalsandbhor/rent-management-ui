@@ -6,6 +6,7 @@ import {
   MatDialogModule,
   MatDialogRef
 } from '@angular/material/dialog';
+import { formatDate } from '@angular/common';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -85,8 +86,9 @@ export class AddTenantDialogComponent implements OnInit {
 
   loadVacantFlats() {
 
-    const date =
-      this.joiningDate?.toISOString().split('T')[0] || '';
+    const date = this.joiningDate
+  ? formatDate(this.joiningDate, 'yyyy-MM-dd', 'en-IN')
+  : '';
 
     this.flatService
       .getVacantFlats(date)
@@ -100,8 +102,9 @@ export class AddTenantDialogComponent implements OnInit {
 
   save(): void {
 
-  const joiningDate =
-      this.joiningDate?.toISOString().split('T')[0] || '';
+  const joiningDate = this.joiningDate
+  ? formatDate(this.joiningDate, 'yyyy-MM-dd', 'en-IN')
+  : '';
 
   const request = {
 

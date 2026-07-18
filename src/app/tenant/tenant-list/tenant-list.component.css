@@ -17,6 +17,11 @@
 
 }
 
+.add-tenant-btn {
+    width: 200px ;
+    margin-left: 500px;
+}
+
 .page-header .active-page{
     transform:scale(1.08);
     font-weight:600;
@@ -53,6 +58,6 @@
 
 .top-bar{
     margin-left: auto;
-    margin-right: 210px;
+    margin-right: 150px;
 }
 

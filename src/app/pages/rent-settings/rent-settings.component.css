@@ -22,6 +22,15 @@
     padding: 0px 0px 0px 0px !important;
 }
 
+.mdc-button__label{
+    width: 150px;
+}
+
+.mdc-data-table__header-cell {
+    font-weight: 600;
+    color: #424242;
+    border-bottom: 1px solid #e0e0e0;
+}
 .mat-mdc-card-content:last-child {
     padding-bottom: 0px !important;
 }
