@@ -1,10 +1,23 @@
-<h2>
+<div class="page-header">
 
-    Tenant Management
+    <p class="mat-body-1">
+        Total Rows : {{ tenants.length }}
+    </p>
 
-</h2>
+    <div class="top-bar">
 
-<p class="mat-body-1">Total Rows : {{ tenants.length }}</p>
+        <button
+            mat-raised-button
+            color="primary"
+            (click)="openAddTenant()">
+
+            + Add Tenant
+
+        </button>
+
+    </div>
+
+</div>
 
 <div *ngIf="loading">
   Loading Tenants ...

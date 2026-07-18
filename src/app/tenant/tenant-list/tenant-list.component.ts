@@ -76,6 +76,27 @@ export class TenantListComponent implements OnInit {
 
 }
 
+openAddTenant(): void {
+
+  const dialogRef = this.dialog.open(
+    AddTenantDialogComponent,
+    {
+      width: '550px'
+    }
+  );
+
+  dialogRef.afterClosed().subscribe(result => {
+
+    if (result) {
+
+      this.loadTenants();
+
+    }
+
+  });
+
+}
+
   editTenant(row: Tenant): void {
 
   const dialogRef = this.dialog.open(
