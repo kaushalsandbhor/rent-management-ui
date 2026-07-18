@@ -10,9 +10,9 @@
 
         <mat-card-content>
 
-            <h2>
-                ₹{{ currentRent?.rentAmount }}
-            </h2>
+            <h2 class="rent-value">
+    <span class="rupee">₹</span>{{ currentRent?.rentAmount }}
+</h2>
 
             <p *ngIf="currentRent">
                 Effective From

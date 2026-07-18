@@ -10,6 +10,10 @@
     
 }
 
+.mat-mdc-button-base{
+    min-width: 100px;
+}
+
 .table-container {
     margin: 0px;
 }
@@ -30,7 +34,35 @@
     display: none;
 }
 
+.rent-value{
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
 
+.rupee{
+
+    display: inline-block;
+
+    transform-style: preserve-3d;
+
+    transform-origin: center;
+
+    animation: rupeeSpin 3s linear infinite;
+
+}
+
+@keyframes rupeeSpin{
+
+    from{
+        transform: perspective(500px) rotateY(0deg);
+    }
+
+    to{
+        transform: perspective(500px) rotateY(360deg);
+    }
+
+}
 
 
 
