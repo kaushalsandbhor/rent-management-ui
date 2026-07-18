@@ -1,5 +1,7 @@
 <div class="container">
 
+    <!-- Current Rent -->
+
     <mat-card>
 
         <mat-card-title>
@@ -23,25 +25,25 @@
 
     <br>
 
-    <div class="rent-sett-filter">
+    <!-- Change Rent -->
 
-        <mat-card>
+    <mat-card>
 
-            <mat-card-title>
-                Change Rent
-            </mat-card-title>
+        <mat-card-title>
+            Change Rent
+        </mat-card-title>
 
-            <mat-card-content>
+        <mat-card-content>
 
-                <form
-                    [formGroup]="form"
-                    (ngSubmit)="save()">
+            <form
+                [formGroup]="form"
+                (ngSubmit)="save()">
+
+                <div class="filters">
 
                     <mat-form-field appearance="outline">
 
-                        <mat-label>
-                            New Rent
-                        </mat-label>
+                        <mat-label>New Rent</mat-label>
 
                         <input
                             matInput
@@ -52,9 +54,7 @@
 
                     <mat-form-field appearance="outline">
 
-                        <mat-label>
-                            Month
-                        </mat-label>
+                        <mat-label>Month</mat-label>
 
                         <mat-select formControlName="selectedMonth">
 
@@ -72,9 +72,7 @@
 
                     <mat-form-field appearance="outline">
 
-                        <mat-label>
-                            Year
-                        </mat-label>
+                        <mat-label>Year</mat-label>
 
                         <mat-select formControlName="selectedYear">
 
@@ -90,24 +88,30 @@
 
                     </mat-form-field>
 
-                    <button
-                        mat-raised-button
-                        color="primary"
-                        type="submit">
+                    <div class="top-bar">
 
-                        Save
+                        <button
+                            mat-raised-button
+                            color="primary"
+                            type="submit">
 
-                    </button>
+                            Save
 
-                </form>
+                        </button>
 
-            </mat-card-content>
+                    </div>
 
-        </mat-card>
+                </div>
 
-    </div>
+            </form>
+
+        </mat-card-content>
+
+    </mat-card>
 
     <br>
+
+    <!-- Rent History -->
 
     <mat-card>
 
@@ -115,49 +119,72 @@
             Rent History
         </mat-card-title>
 
-        <table
-            mat-table
-            [dataSource]="dataSource">
+        <mat-card-content>
 
-            <ng-container matColumnDef="effectiveFrom">
+            <p class="mat-body-1">
 
-                <th mat-header-cell *matHeaderCellDef>
-                    Effective From
-                </th>
+                Total Rows : {{ dataSource.data.length }}
 
-                <td mat-cell *matCellDef="let row">
+            </p>
 
-                    {{ formatMonthYear(row.effectiveFrom) }}
+            <div class="table-container">
 
-                </td>
+                <table
+                    mat-table
+                    [dataSource]="dataSource"
+                    class="mat-elevation-z2 imtable">
 
-            </ng-container>
+                    <!-- Effective From -->
 
-            <ng-container matColumnDef="rentAmount">
+                    <ng-container matColumnDef="effectiveFrom">
 
-                <th mat-header-cell *matHeaderCellDef>
-                    Rent
-                </th>
+                        <th mat-header-cell *matHeaderCellDef>
 
-                <td mat-cell *matCellDef="let row">
+                            Effective From
 
-                    ₹{{ row.rentAmount }}
+                        </th>
 
-                </td>
+                        <td mat-cell *matCellDef="let row">
 
-            </ng-container>
+                            {{ formatMonthYear(row.effectiveFrom) }}
 
-            <tr
-                mat-header-row
-                *matHeaderRowDef="displayedColumns">
-            </tr>
+                        </td>
 
-            <tr
-                mat-row
-                *matRowDef="let row; columns: displayedColumns;">
-            </tr>
+                    </ng-container>
 
-        </table>
+                    <!-- Rent -->
+
+                    <ng-container matColumnDef="rentAmount">
+
+                        <th mat-header-cell *matHeaderCellDef>
+
+                            Rent
+
+                        </th>
+
+                        <td mat-cell *matCellDef="let row">
+
+                            ₹ {{ row.rentAmount }}
+
+                        </td>
+
+                    </ng-container>
+
+                    <tr
+                        mat-header-row
+                        *matHeaderRowDef="displayedColumns">
+                    </tr>
+
+                    <tr
+                        mat-row
+                        *matRowDef="let row; columns: displayedColumns">
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </mat-card-content>
 
     </mat-card>
 

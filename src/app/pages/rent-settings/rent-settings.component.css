@@ -1,0 +1,27 @@
+.container {
+    padding: 20px 15px;
+}
+
+
+.filters {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    
+}
+
+.table-container {
+    margin: 0px;
+}
+
+.mat-mdc-card-content {
+    padding: 0px 0px 0px 0px !important;
+}
+
+.mat-mdc-card-content:last-child {
+    padding-bottom: 0px !important;
+}
+
+.mat-mdc-card {
+    box-shadow: none !important;
+}
