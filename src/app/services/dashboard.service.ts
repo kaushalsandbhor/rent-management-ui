@@ -10,7 +10,7 @@ export class DashboardService {
 
   private http = inject(HttpClient);
 
-  private api = `${environment.apiUrl}/api/dashboard`;
+  private api = `${environment.apiUrl}/dashboard`;
 
   getDashboard(
     month: number,
