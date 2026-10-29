@@ -138,7 +138,7 @@ loadDashboard(): void {
 
   this.dashboard = data;
 
-  console.log("Dashboard Variable", this.dashboard);
+  
 
   this.calculateSummary();
 
